@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phubers.blog | Create a project</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f4f7fb;
+        --surface: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --border: #d1d5db;
+        --accent: #2563eb;
+        --accent-strong: #1d4ed8;
+        --success: #0f766e;
+        --danger: #b91c1c;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 2rem 1rem 3rem;
+      }
+
+      .hero,
+      .panel {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+      }
+
+      .hero {
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero h1,
+      .panel h2 {
+        margin-top: 0;
+      }
+
+      .hero p,
+      .helper-text,
+      .empty-state {
+        color: var(--muted);
+      }
+
+      .layout {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      }
+
+      .panel {
+        padding: 1.5rem;
+      }
+
+      form {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .field-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+
+      label {
+        display: grid;
+        gap: 0.4rem;
+        font-weight: 600;
+      }
+
+      input,
+      select,
+      textarea,
+      button {
+        font: inherit;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 0.75rem 0.85rem;
+        background: #fff;
+      }
+
+      textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+
+      button {
+        border: 0;
+        border-radius: 999px;
+        padding: 0.85rem 1.25rem;
+        background: var(--accent);
+        color: #fff;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      button:hover {
+        background: var(--accent-strong);
+      }
+
+      .status-message {
+        min-height: 1.5rem;
+        font-weight: 600;
+      }
+
+      .status-message.error {
+        color: var(--danger);
+      }
+
+      .status-message.success {
+        color: var(--success);
+      }
+
+      .project-list {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .project-card {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1rem;
+        background: linear-gradient(180deg, #fff, #f8fafc);
+      }
+
+      .project-card header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .project-card h3 {
+        margin: 0;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.25rem 0.65rem;
+        border-radius: 999px;
+        background: #dbeafe;
+        color: #1d4ed8;
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      .meta-list,
+      .tag-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        list-style: none;
+        padding: 0;
+        margin: 0.75rem 0 0;
+      }
+
+      .meta-list li,
+      .tag-list li {
+        border-radius: 999px;
+        padding: 0.35rem 0.7rem;
+        background: #eef2ff;
+      }
+
+      .project-card dl {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.5rem 0.75rem;
+        margin: 0.9rem 0 0;
+      }
+
+      .project-card dt {
+        font-weight: 700;
+      }
+
+      .project-card dd {
+        margin: 0;
+      }
+
+      .project-card a {
+        color: var(--accent-strong);
+      }
+
+      @media (max-width: 800px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <h1>Create a project</h1>
+        <p>
+          Capture the essentials from Linear's project setup flow with a required
+          project name and optional planning details such as a lead, teams,
+          milestone, dates, members, and supporting links or documents.
+        </p>
+      </section>
+
+      <div class="layout">
+        <section class="panel">
+          <h2>New project</h2>
+          <form id="project-form" novalidate>
+            <div class="field-grid">
+              <label>
+                Project name *
+                <input id="name" name="name" autocomplete="off" required />
+              </label>
+              <label>
+                Project lead
+                <input id="lead" name="lead" autocomplete="off" />
+              </label>
+              <label>
+                Project icon
+                <input
+                  id="icon"
+                  name="icon"
+                  autocomplete="off"
+                  maxlength="2"
+                  placeholder="🚀"
+                />
+              </label>
+              <label>
+                Status
+                <select id="status" name="status">
+                  <option value="Planned" selected>Planned</option>
+                  <option value="In progress">In progress</option>
+                  <option value="Completed">Completed</option>
+                  <option value="Paused">Paused</option>
+                </select>
+              </label>
+              <label>
+                Team(s)
+                <input
+                  id="teams"
+                  name="teams"
+                  autocomplete="off"
+                  placeholder="Growth, Product"
+                />
+              </label>
+              <label>
+                Milestone
+                <input id="milestone" name="milestone" autocomplete="off" />
+              </label>
+              <label>
+                Start date
+                <input id="startDate" name="startDate" type="date" />
+              </label>
+              <label>
+                Target date
+                <input id="targetDate" name="targetDate" type="date" />
+              </label>
+            </div>
+
+            <label>
+              Project description
+              <textarea
+                id="description"
+                name="description"
+                placeholder="Summarize the outcome this project should deliver."
+              ></textarea>
+            </label>
+
+            <label>
+              Members
+              <textarea
+                id="members"
+                name="members"
+                placeholder="Separate names with commas or new lines."
+              ></textarea>
+            </label>
+
+            <label>
+              External links or documents
+              <textarea
+                id="resources"
+                name="resources"
+                placeholder="Paste one link or note per line."
+              ></textarea>
+            </label>
+
+            <div>
+              <button type="submit">Create project</button>
+            </div>
+            <p class="status-message" id="status-message" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <aside class="panel">
+          <h2>Project overview</h2>
+          <p class="helper-text">
+            Created projects are stored in your browser so you can review them on
+            refresh.
+          </p>
+          <div class="project-list" id="project-list">
+            <p class="empty-state">No projects yet. Create one to see it here.</p>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <script type="module" src="./project-form.mjs"></script>
+  </body>
+</html>
